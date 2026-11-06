@@ -1,0 +1,25 @@
+{
+  "name": "magpie-agent-rambo",
+  "version": "0.1.0",
+  "description": "Connect Rambo to Magpie's model gateway",
+  "type": "module",
+  "license": "MIT",
+  "files": ["agents/*.mjs", "assets/rambo.png", "README.md", "LICENSE"],
+  "keywords": ["magpie-plugin", "magpie-agent", "rambo", "codex"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jiawei666/magpie-agent-rambo.git"
+  },
+  "magpie": {
+    "name": "Rambo",
+    "icon": "https://raw.githubusercontent.com/jiawei666/magpie-agent-rambo/main/assets/rambo.png",
+    "summary": {
+      "zh": "将 Magpie 网关模型接入 Rambo",
+      "en": "Connect Magpie gateway models to Rambo"
+    },
+    "agent": "./agents/rambo-macos.mjs"
+  },
+  "scripts": {
+    "test": "node --test"
+  }
+}
