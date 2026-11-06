@@ -40,4 +40,4 @@ macOS 插件写入 `~/Library/Application Support/Rambo/magpie.json`；Windows �
 npm test
 ```
 
-GitHub 发现使用 `magpie-plugin` topic。插件 logo 由 `package.json` 的 `magpie.icon` 提供。
+GitHub 发现使用 `magpie-plugin` topic。插件发现卡片使用 `package.json` 的 `magpie.icon`，Agent 列表行则由三个平台 Agent 描述中的 `icon` 明确提供。

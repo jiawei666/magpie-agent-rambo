@@ -21,6 +21,7 @@ test("package publishes a Magpie Agent with the Rambo logo and discovery metadat
 
 test("Magpie agent targets Rambo's per-user bridge config", () => {
   assert.equal(agent.id, "rambo");
+  assert.equal(agent.icon, "https://raw.githubusercontent.com/jiawei666/magpie-agent-rambo/main/assets/rambo.png");
   assert.equal(agent.dir, "/Applications/Rambo.app");
   assert.equal(agent.config, "~/Library/Application Support/Rambo/magpie.json");
   assert.equal(agent.model, "model");
@@ -28,6 +29,8 @@ test("Magpie agent targets Rambo's per-user bridge config", () => {
 });
 
 test("Windows and Linux agent files target their platform install and config paths", () => {
+  assert.equal(windowsAgent.icon, agent.icon);
+  assert.equal(linuxAgent.icon, agent.icon);
   assert.equal(windowsAgent.dir, "$LOCALAPPDATA/Programs/Rambo");
   assert.equal(windowsAgent.config, "$APPDATA/Rambo/magpie.json");
   assert.equal(linuxAgent.dir, "~/.config/Rambo");
