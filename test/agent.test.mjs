@@ -4,6 +4,8 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { test } from "node:test";
 import { agent, connect } from "../agents/rambo-macos.mjs";
+import { agent as windowsAgent } from "../agents/rambo-windows.mjs";
+import { agent as linuxAgent } from "../agents/rambo-linux.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -19,9 +21,17 @@ test("package publishes a Magpie Agent with the Rambo logo and discovery metadat
 
 test("Magpie agent targets Rambo's per-user bridge config", () => {
   assert.equal(agent.id, "rambo");
+  assert.equal(agent.dir, "/Applications/Rambo.app");
   assert.equal(agent.config, "~/Library/Application Support/Rambo/magpie.json");
   assert.equal(agent.model, "model");
   assert.equal("library" in agent, false);
+});
+
+test("Windows and Linux agent files target their platform install and config paths", () => {
+  assert.equal(windowsAgent.dir, "$LOCALAPPDATA/Programs/Rambo");
+  assert.equal(windowsAgent.config, "$APPDATA/Rambo/magpie.json");
+  assert.equal(linuxAgent.dir, "~/.config/Rambo");
+  assert.equal(linuxAgent.config, "~/.config/Rambo/magpie.json");
 });
 
 test("connect writes only the Magpie gateway bridge fields", () => {

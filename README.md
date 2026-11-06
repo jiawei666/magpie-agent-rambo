@@ -6,23 +6,27 @@
 
 ## 安装
 
-在 Magpie 的“插件”中选择“添加插件”，输入此 GitHub 仓库地址；也可以克隆仓库后执行：
+仓库带有 GitHub `magpie-plugin` topic，可在 Magpie 的 Plugins → Discover → Unofficial 中发现。macOS 用户可以直接添加仓库：
 
 ```sh
 magpie plugin add ./magpie-agent-rambo
 ```
 
-之后在 Magpie 的 Agent 页面为 Rambo 选择 Magpie 中的模型。连接成功后重启 Rambo 即可生效。更换模型或在 Magpie 中断开后，也需要重启 Rambo。
-
-也可以直接加载平台对应的 Agent 文件：
+克隆仓库后，Windows 用户使用平台对应的 Agent 文件：
 
 ```sh
-magpie plugin add ./agents/rambo-macos.mjs
-magpie plugin add ./agents/rambo-windows.mjs
-magpie plugin add ./agents/rambo-linux.mjs
+magpie plugin add ./magpie-agent-rambo/agents/rambo-windows.mjs
+```
+
+Linux 用户（社区构建）使用：
+
+```sh
+magpie plugin add ./magpie-agent-rambo/agents/rambo-linux.mjs
 ```
 
 macOS 插件写入 `~/Library/Application Support/Rambo/magpie.json`；Windows 使用 `%APPDATA%/Rambo/magpie.json`；Linux 使用 `~/.config/Rambo/magpie.json`。这些路径对应 Electron 默认的 Rambo 用户数据目录。
+
+安装后在 Magpie 的 Agents 页面为 Rambo 选择模型。连接成功后重启 Rambo 生效；更换模型或在 Magpie 中断开后，也需要重启 Rambo。
 
 ## 配置与凭证
 

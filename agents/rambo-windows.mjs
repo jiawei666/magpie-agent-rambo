@@ -1,6 +1,7 @@
 export const agent = {
   id: "rambo",
   name: "Rambo",
+  dir: "$LOCALAPPDATA/Programs/Rambo",
   config: "$APPDATA/Rambo/magpie.json",
   model: "model",
   notice: "Rambo reads Magpie settings when it starts. Restart Rambo after changing or disconnecting the model.",
