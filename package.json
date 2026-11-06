@@ -1,6 +1,6 @@
 {
   "name": "magpie-agent-rambo",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Connect Rambo to Magpie's model gateway",
   "type": "module",
   "license": "MIT",
