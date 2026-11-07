@@ -1,7 +1,7 @@
 export const agent = {
   id: "rambo",
   name: "Rambo",
-  icon: "https://raw.githubusercontent.com/jiawei666/magpie-agent-rambo/main/assets/rambo.png",
+  icon: new URL("../assets/rambo.png", import.meta.url).href,
   dir: "$LOCALAPPDATA/Programs/Rambo",
   config: "$APPDATA/Rambo/magpie.json",
   model: "model",
