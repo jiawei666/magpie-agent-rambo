@@ -17,6 +17,10 @@ test("package publishes a Magpie Agent with the Rambo logo and discovery metadat
   assert.match(pkg.magpie.icon, /raw\.githubusercontent\.com\/jiawei666\/magpie-agent-rambo/u);
   assert.ok(existsSync(join(root, pkg.magpie.agent)));
   assert.deepEqual([...logo.subarray(0, 8)], [137, 80, 78, 71, 13, 10, 26, 10]);
+  assert.equal(logo.readUInt32BE(16), 256);
+  assert.equal(logo.readUInt32BE(20), 256);
+  assert.equal(logo[24], 8);
+  assert.equal(logo[25], 6);
 });
 
 test("Magpie agent targets Rambo's per-user bridge config", () => {
