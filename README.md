@@ -46,4 +46,4 @@ Magpie 读取插件中对应平台的 Agent 描述，按 `dir` 检查本机是�
 npm test
 ```
 
-GitHub 发现使用 `magpie-plugin` topic。插件发现卡片使用 `package.json` 中自包含的 SVG `magpie.icon`，圆角由 SVG 形状裁切。Agent 文件保持 Magpie 脚本引擎可直接读取的静态描述，并为 Agent 列表提供该版本的 PNG 图标地址；插件不在 Agent 文件中使用 `URL`、`import.meta` 或其他 Node.js 专有全局。
+GitHub 发现使用 `magpie-plugin` topic。插件发现卡片使用 `package.json` 中自包含的 SVG `magpie.icon`，圆角由 SVG 形状裁切。Agent 文件保持 Magpie 脚本引擎可直接读取的静态描述，并为 Agent 列表提供带透明圆角的版本化 PNG 图标；插件不在 Agent 文件中使用 `URL`、`import.meta` 或其他 Node.js 专有全局。
