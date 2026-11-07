@@ -11,8 +11,10 @@
 ## Magpie 加载环境
 
 - `agents/*.mjs` 由 Magpie 的 MoeJS 脚本环境读取，不等同于 Node.js。保持 `agent` 和 `connect` 为静态 ES module 导出，不使用 `URL`、`import.meta`、`process`、`Buffer` 或 `require`。
+- Magpie 内置 Codex 适配器会直接修改 `~/.codex/config.toml`，并保存原值用于断开恢复。第三方 Agent 插件协议当前支持 `json`、`yaml` 和 `env`，暂不支持 TOML；不能把内置 Codex 的直写能力当成第三方 Agent 插件同样可用。
 - Magpie 通过 `agent.dir` 检查本机安装。macOS 为 `/Applications/Rambo.app`，Windows 为 `$LOCALAPPDATA/Programs/Rambo`，Linux 为 `~/.config/Rambo`。
-- Magpie 通过 `agent.config` 写入专属桥接文件 `magpie.json`；`connect` 只返回 `baseURL`、`apiKey` 和 `managedBy: "magpie"`。桥接凭据不进入 Rambo 的 `config.toml`。
+- 当前 Rambo 插件通过 `agent.config` 写入 `magpie.json`，这是第三方 Agent 插件协议下可被 Magpie 合并和恢复的 JSON 桥接文件。Rambo 启动后再将它转换为正式的 `codex-home/config.toml` 并注入运行时环境；`connect` 只返回 `baseURL`、`apiKey` 和 `managedBy: "magpie"`。
+- 若要改为由 Magpie 直接写 Rambo 的 `config.toml`，先让 Magpie 的第三方 Agent 插件协议正式支持 TOML 安全合并与恢复，再迁移插件；不要用 JSON 写入器改名为 `.toml` 或在插件外绕过 Magpie 的连接状态。
 - `~/.config/magpie/plugins/node_modules/magpie-agent-rambo` 是 Magpie 的本机安装副本。修改、验证或发布仓库时保持该目录不变，由用户在 Magpie 中更新插件。
 
 ## 发布检查
