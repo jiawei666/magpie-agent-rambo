@@ -1,11 +1,11 @@
 export const agent = {
   id: "rambo",
   name: "Rambo",
-  icon: "https://raw.githubusercontent.com/jiawei666/magpie-agent-rambo/v0.1.6/assets/rambo.png",
+  icon: "https://raw.githubusercontent.com/jiawei666/magpie-agent-rambo/v0.1.7/assets/rambo.png",
   dir: "/Applications/Rambo.app",
-  config: "~/Library/Application Support/Rambo/magpie.json",
+  config: "~/.config/magpie/agent-state/rambo/bridge.json",
   model: "model",
-  notice: "Rambo reads Magpie settings when it starts. Restart Rambo after changing or disconnecting the model.",
+  notice: "The Rambo plugin writes Rambo's Codex config. Restart Rambo after changing or disconnecting the model.",
 };
 
 export function connect({ gateway }) {
