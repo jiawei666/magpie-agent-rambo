@@ -28,6 +28,12 @@ macOS 插件写入 `~/Library/Application Support/Rambo/magpie.json`；Windows �
 
 安装后在 Magpie 的 Agents 页面为 Rambo 选择模型。连接成功后重启 Rambo 生效；更换模型或在 Magpie 中断开后，也需要重启 Rambo。
 
+## 本机识别与连接
+
+Magpie 读取插件中对应平台的 Agent 描述，按 `dir` 检查本机是否装有 Rambo，并在列表中显示检测结果。macOS 使用 `/Applications/Rambo.app`；Windows 使用 `%LOCALAPPDATA%/Programs/Rambo`；Linux 使用 `~/.config/Rambo`。插件只声明 Rambo 的实际安装位置和启动约定，不附带或启动自己的 Rambo 副本。
+
+接入模型时，Magpie 按 Agent 描述中的 `config` 路径调用 `connect`，把当前模型的网关地址、访问密钥和管理标记写入 Rambo 的桥接文件。Rambo 启动时读取该文件，并把连接交给自己的 Codex App Server。Magpie 连接文件通过 `managedBy: "magpie"` 识别自己写入的内容；断开后，按插件接入前的状态恢复。
+
 ## 配置与凭证
 
 桥接文件由 Magpie 管理，包含 `model`、`baseURL`、`apiKey` 和 `managedBy` 字段。`apiKey` 是 Magpie 网关为 Rambo Agent 生成的访问密钥。Rambo 从该文件读取密钥，并仅通过进程环境传给 App Server；它不会把此密钥写入 Codex TOML。
@@ -40,4 +46,4 @@ macOS 插件写入 `~/Library/Application Support/Rambo/magpie.json`；Windows �
 npm test
 ```
 
-GitHub 发现使用 `magpie-plugin` topic。插件发现卡片使用 `package.json` 的 `magpie.icon`，Agent 列表行则由三个平台 Agent 描述中的 `icon` 明确提供。
+GitHub 发现使用 `magpie-plugin` topic。插件发现卡片使用 `package.json` 中自包含的 SVG `magpie.icon`，圆角由 SVG 形状裁切。Agent 文件保持 Magpie 脚本引擎可直接读取的静态描述，并为 Agent 列表提供该版本的 PNG 图标地址；插件不在 Agent 文件中使用 `URL`、`import.meta` 或其他 Node.js 专有全局。
